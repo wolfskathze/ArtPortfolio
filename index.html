@@ -30,7 +30,7 @@
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
       .nodeThreeObject(({ img }) => {
-          const imgTexture = new THREE.TextureLoader().load('https://www.icloud.com/photos/#0024xu6A3RWekwWql-r9o4iLw');
+          const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
         imgTexture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.SpriteMaterial({ map: imgTexture });
         const sprite = new THREE.Sprite(material);
