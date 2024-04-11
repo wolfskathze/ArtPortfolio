@@ -20,6 +20,9 @@
     <label for="date">Sort by Date</label>
     <input type="radio" id="topic" name="sort" value="topic">
     <label for="topic">Sort by Topic</label>
+
+    <input type="button" id="zoom" onclick="ZoomOut()">
+    <label for="zoom">Zoom out</label>
   </div>
   <div id="3d-graph"></div>
 
@@ -39,6 +42,36 @@
         }))
     };
 
+    const hData = {
+      nodes: imgs.map((img, id) => ({ id, img })),
+      links: [...Array(imgs.length).keys()]
+        .filter(id => id)
+        .map(id => ({
+          source: id,
+          target: Math.round(Math.random() * (id-1))
+        }))
+    };
+
+    const iData = {
+      nodes: imgs.map((img, id) => ({ id, img })),
+      links: [...Array(imgs.length).keys()]
+        .filter(id => id)
+        .map(id => ({
+          source: id,
+          target: Math.round(Math.random() * (id-1))
+        }))
+    };
+
+    const jData = {
+      nodes: imgs.map((img, id) => ({ id, img })),
+      links: [...Array(imgs.length).keys()]
+        .filter(id => id)
+        .map(id => ({
+          source: id,
+          target: Math.round(Math.random() * (id-1))
+        }))
+    };
+
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
       .nodeThreeObject(({ img }) => {
@@ -49,8 +82,42 @@
         sprite.scale.set(12, 12);
         return sprite;
       })
-      .graphData(gData);
+      .graphData(gData)
+
+     let rdBtn = document.querySelectorAll("input[name='sort']");
+rdBtn.addEventListener("click", checkRd);
+
+function checkRd(){
+  if(rdBtn[0].checked == true){
+Graph.graphData(gData);
+}
+else if(rdBtn[1].checked == true){
+Graph.graphData(hData);
+}
+else if(rdBtn[2].checked == true){
+Graph.graphData(iData);
+}
+else if(rdBtn[3].checked == true){
+Graph.graphData(jData);
+}
+}
+    let btn = document.getElementById("zoom");
+  btn.onlick(() => Graph.zoomToFit(400)); //Optional // On button?
   // fit to canvas when engine stops
-  // Graph.onEngineStop(() => Graph.zoomToFit(400)); //Optional // On button?
+  //Graph.onEngineStop(() => Graph.zoomToFit(400));
+      //.onNodeClick(node => { //Optional // On button?
+      //    // Aim at node from outside it
+      //    const distance = 40;
+      //    const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+      //    const newPos = node.x || node.y || node.z
+      //      ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+      //      : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
+      //    Graph.cameraPosition(
+      //      newPos, // new position
+      //      node, // lookAt ({ x, y, z })
+      //      3000  // ms transition duration
+      //    );
+      //  })
+      ;
   </script>
 </body>
