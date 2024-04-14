@@ -21,7 +21,7 @@
     <input type="radio" id="topic" name="sort" value="topic">
     <label for="topic">Sort by Topic</label>
 
-    <input type="button" id="zoom" onclick="ZoomOut()">
+    <input type="button" id="zoom">
     <label for="zoom">Zoom out</label>
   </div>
   <div id="3d-graph"></div>
@@ -88,21 +88,21 @@
 rdBtn.addEventListener("click", checkRd);
 
 function checkRd(){
-  if(rdBtn[0].checked == true){
+  if(rdBtn[0].value="type"){
 Graph.graphData(gData);
 }
-else if(rdBtn[1].checked == true){
+else if(rdBtn[1].value="date"){
 Graph.graphData(hData);
 }
-else if(rdBtn[2].checked == true){
+else if(rdBtn[2].value="topic"){
 Graph.graphData(iData);
 }
-else if(rdBtn[3].checked == true){
+else if(rdBtn[3].value="topic"){
 Graph.graphData(jData);
 }
 }
-    let btn = document.getElementById("zoom");
-  btn.onlick(() => Graph.zoomToFit(400)); //Optional // On button?
+    let btn = document.querySelectorAll("input[name='zoom']");
+  btn.addEventListener("click", Graph.zoomToFit(400); //Optional // On button?
   // fit to canvas when engine stops
   //Graph.onEngineStop(() => Graph.zoomToFit(400));
       //.onNodeClick(node => { //Optional // On button?
