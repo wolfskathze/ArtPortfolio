@@ -12,16 +12,16 @@
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
   <br>
   <div class="radio-toolbar">
-    <input type="radio" id="color" name="sort" value="color" checked="checked">
+    <input type="radio" id="color" name="sort" value="color" checked="checked" onchange="checkRd()">
     <label for="color">Sort By Color</label>
-    <input type="radio" id="type" name="sort" value="type">
+    <input type="radio" id="type" name="sort" value="type" onchange="checkRd()">
     <label for="type">Sort by Type</label>
-    <input type="radio" id="date" name="sort" value="date">
+    <input type="radio" id="date" name="sort" value="date" onchange="checkRd()">
     <label for="date">Sort by Date</label>
-    <input type="radio" id="topic" name="sort" value="topic">
+    <input type="radio" id="topic" name="sort" value="topic" onchange="checkRd()">
     <label for="topic">Sort by Topic</label>
 
-    <input type="button" id="zoom">
+    <input type="button" id="zoom" onclick="zoomOut()">
     <label for="zoom">Zoom out</label>
   </div>
   <div id="3d-graph"></div>
@@ -85,8 +85,11 @@
       .graphData(gData)
 
      let rdBtn = document.querySelectorAll("input[name='sort']");
-rdBtn.addEventListener("click", checkRd);
+    let btn = document.querySelectorAll("input[name='zoom']");
+//rdBtn.addEventListener("click", checkRd);
 
+  </script>
+  <script>
 function checkRd(){
   if(rdBtn[0].value="type"){
 Graph.graphData(gData);
@@ -101,8 +104,11 @@ else if(rdBtn[3].value="topic"){
 Graph.graphData(jData);
 }
 }
-    let btn = document.querySelectorAll("input[name='zoom']");
-  btn.addEventListener("click", Graph.zoomToFit(400)); //Optional // On button?
+
+function zoomOut(){
+Graph.zoomToFit(400);
+}
+  // btn.addEventListener("click", Graph.zoomToFit(400)); //Optional // On button?
   // fit to canvas when engine stops
   //Graph.onEngineStop(() => Graph.zoomToFit(400));
       //.onNodeClick(node => { //Optional // On button?
