@@ -11,19 +11,19 @@
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
   <br>
-  <div class="radio-toolbar">
-    <input type="radio" id="color" name="sort" value="color" checked="checked">
-    <label for="color">Sort By Color</label>
-    <input type="radio" id="type" name="sort" value="type">
-    <label for="type">Sort by Type</label>
-    <input type="radio" id="date" name="sort" value="date">
-    <label for="date">Sort by Date</label>
-    <input type="radio" id="topic" name="sort" value="topic">
-    <label for="topic">Sort by Topic</label>
+//  <div class="radio-toolbar">
+//    <input type="radio" id="color" name="sort" value="color" checked="checked">
+//    <label for="color">Sort By Color</label>
+//    <input type="radio" id="type" name="sort" value="type">
+//    <label for="type">Sort by Type</label>
+//    <input type="radio" id="date" name="sort" value="date">
+//    <label for="date">Sort by Date</label>
+//    <input type="radio" id="topic" name="sort" value="topic">
+//    <label for="topic">Sort by Topic</label>
 
-    <input type="button" id="zoom" onclick="zoomOut()">
-    <label for="zoom">Zoom out</label>
-  </div>
+//    <input type="button" id="zoom" onclick="zoomOut()">
+//    <label for="zoom">Zoom out</label>
+//  </div>
   <div id="3d-graph"></div>
 
   <script type="module">
@@ -88,20 +88,33 @@
     let btn = document.querySelectorAll("input[name='zoom']");
 rdBtn.addEventListener("click", checkRd);
 
-  </script>
-  <script>
-let Graph = (document.getElementById('3d-graph');
+    //Define GUI
+    const Settings = function() {
+      this.mode = 0;
+      this.zoom = 0;
+    };
+
+    const settings = new Settings();
+    const gui = new dat.GUI();
+
+    const controllerOne = gui.add(settings, 'redDistance', 0, 3);
+    const controllerTwo = gui.add(settings, 'greenDistance', 0, 1);
+
+    controllerOne.onChange(checkRd);
+    controllerTwo.onChange(zoomOut);
+
+
 function checkRd(){
-  if(rdBtn[0].value="type"){
+  if(settings.mode=0){
 Graph.graphData(gData);
 }
-else if(rdBtn[1].value="date"){
+else if(settings.mode=1){
 Graph.graphData(hData);
 }
-else if(rdBtn[2].value="topic"){
+else if(settings.mode=2){
 Graph.graphData(iData);
 }
-else if(rdBtn[3].value="topic"){
+else if(settings.mode=3){
 Graph.graphData(jData);
 }
 }
