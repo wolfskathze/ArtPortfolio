@@ -34,7 +34,7 @@
       (document.getElementById('3d-graph'))
       .jsonUrl('./datasets/animals.json')
       .nodeThreeObject(node => {
-          const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.link}`);
+          const imgTexture = new THREE.TextureLoader().load(node.link);
         imgTexture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.SpriteMaterial({ map: imgTexture });
         const sprite = new THREE.Sprite(material);
