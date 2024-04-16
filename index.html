@@ -2,7 +2,6 @@
   <link rel="stylesheet" href="./src/index.css">
   <style> body { margin: 0; } </style>
 
-  <script src="//unpkg.com/dat.gui"></script>
   <script src="https://unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
 </head>
@@ -12,121 +11,43 @@
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
   <br>
+  <div class="radio-toolbar">
+    <input type="radio" id="color" name="sort" value="color" checked="checked">
+    <label for="color">Sort By Color</label>
+    <input type="radio" id="type" name="sort" value="type">
+    <label for="type">Sort by Type</label>
+    <input type="radio" id="date" name="sort" value="date">
+    <label for="date">Sort by Date</label>
+    <input type="radio" id="topic" name="sort" value="topic" >
+    <label for="topic">Sort by Topic</label>
 
+    <input type="button" id="zoom" onclick="zoomOut()">
+    <label for="zoom">Zoom out</label>
+  </div>
   <div id="3d-graph"></div>
 
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-
-    const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
-
-    // Random connected graph
-    const gData = {
-      nodes: imgs.map((img, id) => ({ id, img })),
-      links: [...Array(imgs.length).keys()]
-        .filter(id => id)
-        .map(id => ({
-          source: id,
-          target: Math.round(Math.random() * (id-1))
-        }))
-    };
-
-    const hData = {
-      nodes: imgs.map((img, id) => ({ id, img })),
-      links: [...Array(imgs.length).keys()]
-        .filter(id => id)
-        .map(id => ({
-          source: id,
-          target: Math.round(Math.random() * (id-1))
-        }))
-    };
-
-    const iData = {
-      nodes: imgs.map((img, id) => ({ id, img })),
-      links: [...Array(imgs.length).keys()]
-        .filter(id => id)
-        .map(id => ({
-          source: id,
-          target: Math.round(Math.random() * (id-1))
-        }))
-    };
-
-    const jData = {
-      nodes: imgs.map((img, id) => ({ id, img })),
-      links: [...Array(imgs.length).keys()]
-        .filter(id => id)
-        .map(id => ({
-          source: id,
-          target: Math.round(Math.random() * (id-1))
-        }))
-    };
+    //import { CSS2DRenderer, CSS2DObject } from 'https://unpkg.com/three/examples/jsm/renderers/CSS2DRenderer.js';
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-      .nodeThreeObject(({ img }) => {
-          const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
+      .jsonUrl('./datasets/animals.json')
+      .nodeThreeObject(node => {
+          const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.link}`);
         imgTexture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.SpriteMaterial({ map: imgTexture });
         const sprite = new THREE.Sprite(material);
         sprite.scale.set(12, 12);
         return sprite;
       })
-      .graphData(gData)
-
-     let rdBtn = document.querySelectorAll("input[name='sort']");
-    let btn = document.querySelectorAll("input[name='zoom']");
-rdBtn.addEventListener("click", checkRd);
-
-    //Define GUI
-    const Settings = function() {
-      this.mode = 0;
-      this.zoom = 0;
-    };
-
-    const settings = new Settings();
-    const gui = new dat.GUI();
-
-    const controllerOne = gui.add(settings, 'redDistance', 0, 3);
-    const controllerTwo = gui.add(settings, 'greenDistance', 0, 1);
-
-    controllerOne.onChange(checkRd);
-    controllerTwo.onChange(zoomOut);
-
-
-function checkRd(){
-  if(settings.mode=0){
-Graph.graphData(gData);
-}
-else if(settings.mode=1){
-Graph.graphData(hData);
-}
-else if(settings.mode=2){
-Graph.graphData(iData);
-}
-else if(settings.mode=3){
-Graph.graphData(jData);
-}
-}
-
+      .nodeThreeObjectExtend(true)
+    ;
+  </script>
+  <script>
 function zoomOut(){
-Graph.zoomToFit(400);
+alert("I am an alert box!");
+document.getElementById('Graph').zoomToFit(400);
 }
-  // btn.addEventListener("click", Graph.zoomToFit(400)); //Optional // On button?
-  // fit to canvas when engine stops
-  //Graph.onEngineStop(() => Graph.zoomToFit(400));
-      //.onNodeClick(node => { //Optional // On button?
-      //    // Aim at node from outside it
-      //    const distance = 40;
-      //    const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
-      //    const newPos = node.x || node.y || node.z
-      //      ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
-      //      : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
-      //    Graph.cameraPosition(
-      //      newPos, // new position
-      //      node, // lookAt ({ x, y, z })
-      //      3000  // ms transition duration
-      //    );
-      //  })
-      ;
   </script>
 </body>
