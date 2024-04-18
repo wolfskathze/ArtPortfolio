@@ -47,7 +47,6 @@
         .onNodeHover(node => {
           if ((!node && !highlightNodes.size) || (node && hoverNode === node)) return;
 
-          highlightNodes.clear();
           highlightLinks.clear();
           if (node) {
             node.links.forEach(link => highlightLinks.add(link));
