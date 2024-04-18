@@ -14,8 +14,8 @@
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-        .jsonUrl('./datasets/miserables.json')
-        .nodeAutoColorBy('group')
+        .jsonUrl('./datasets/animals.json')
+        //.nodeAutoColorBy('group')
         .nodeThreeObject(node => {
           const sprite = new SpriteText(node.id);
           sprite.material.depthWrite = false; // make sprite background transparent
