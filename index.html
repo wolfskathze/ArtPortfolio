@@ -1,8 +1,7 @@
 <head>
-  <link rel="stylesheet" href="./src/index.css">
   <style> body { margin: 0; } </style>
 
-  <script src="https://unpkg.com/3d-force-graph"></script>
+  <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
 </head>
 
@@ -10,47 +9,27 @@
   <i>Disclaimer:</i>
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
-  <br>
-  <div class="radio-toolbar">
-    <input type="radio" id="color" name="sort" value="color" checked="checked">
-    <label for="color">Sort By Color</label>
-    <input type="radio" id="type" name="sort" value="type">
-    <label for="type">Sort by Type</label>
-    <input type="radio" id="date" name="sort" value="date">
-    <label for="date">Sort by Date</label>
-    <input type="radio" id="topic" name="sort" value="topic">
-    <label for="topic">Sort by Topic</label>
-  </div>
   <div id="3d-graph"></div>
 
+  <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
   <script type="module">
+    import SpriteText from "//unpkg.com/three-spritetext/dist/three-spritetext.mjs";
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-
-    const imgs = ['cat.jpg', 'dog.jpg', 'eagle.jpg', 'elephant.jpg', 'grasshopper.jpg', 'octopus.jpg', 'owl.jpg', 'panda.jpg', 'squirrel.jpg', 'tiger.jpg', 'whale.jpg'];
-
-    // Random connected graph
-    const gData = {
-      nodes: imgs.map((img, id) => ({ id, img })),
-      links: [...Array(imgs.length).keys()]
-        .filter(id => id)
-        .map(id => ({
-          source: id,
-          target: Math.round(Math.random() * (id-1))
-        }))
-    };
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-      .nodeThreeObject(({ img }) => {
-          const imgTexture = new THREE.TextureLoader().load(`./imgs/${img}`);
+        .jsonUrl('./datasets/animals.json')
+        .nodeThreeObject(node => {
+          const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
         imgTexture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.SpriteMaterial({ map: imgTexture });
-        const sprite = new THREE.Sprite(material);
-        sprite.scale.set(12, 12);
-        return sprite;
-      })
-      .graphData(gData);
-  // fit to canvas when engine stops
-  // Graph.onEngineStop(() => Graph.zoomToFit(400)); //Optional // On button?
+        const spritetwo = new THREE.Sprite(material);
+        spritetwo.scale.set(12, 12);
+        return spritetwo;
+        });
+
+    // Spread nodes a little wider
+    Graph.d3Force('charge').strength(-120);
+
   </script>
 </body>

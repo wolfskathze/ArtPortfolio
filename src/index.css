@@ -6,6 +6,9 @@ body{
 .radio-toolbar input[type="radio"] {
   display: none;
 }
+.radio-toolbar input[type="button"] {
+  display: none;
+}
 .radio-toolbar label {
   display: inline-block;
   background-color: #fff;
@@ -15,6 +18,10 @@ body{
   font-family: Sans-serif;
 }
 .radio-toolbar input[type="radio"]:checked+label {
+  background-color: #001;
+  color: #fff
+}
+.radio-toolbar input[type="button"]:active+label {
   background-color: #001;
   color: #fff
 }
