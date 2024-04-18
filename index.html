@@ -20,11 +20,11 @@
         .jsonUrl('./datasets/animals.json')
         .nodeThreeObject(node => {
           const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
-        imgTexture.colorSpace = THREE.SRGBColorSpace;
-        const material = new THREE.SpriteMaterial({ map: imgTexture });
-        const spritetwo = new THREE.Sprite(material);
-        spritetwo.scale.set(12, 12);
-        return spritetwo;
+          imgTexture.colorSpace = THREE.SRGBColorSpace;
+          const material = new THREE.SpriteMaterial({ map: imgTexture });
+          const spritetwo = new THREE.Sprite(material);
+          spritetwo.scale.set(12, 12);
+          return spritetwo;
         }
         .onNodeClick(node => {
           // Aim at node from outside it
@@ -46,6 +46,6 @@
     //Graph.d3Force('charge').strength(-120);
 
   // fit to canvas when engine stops
-  Graph.onEngineStop(() => Graph.zoomToFit(400));
+  //Graph.onEngineStop(() => Graph.zoomToFit(400));
   </script>
 </body>
