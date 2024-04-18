@@ -18,7 +18,7 @@
     const highlightLinks = new Set();
     let hoverNode = null;
 
-    const Graph = ForceGraph3D()
+    const Graph = ForceGraph3D({extraRenderers: [new CSS2DRenderer()]})
       (document.getElementById('3d-graph'))
         .jsonUrl('./datasets/animals.json')
         .nodeThreeObject(node => {
@@ -43,33 +43,11 @@
             node, // lookAt ({ x, y, z })
             3000  // ms transition duration
           );
-        })
-.links.forEach(link => {
-      const a = gData.nodes[link.source];
-      const b = gData.nodes[link.target];
-      !a.neighbors && (a.neighbors = []);
-      !b.neighbors && (b.neighbors = []);
-      a.neighbors.push(b);
-      b.neighbors.push(a);
 
-      !a.links && (a.links = []);
-      !b.links && (b.links = []);
-      a.links.push(link);
-      b.links.push(link);
-    })
-        .onNodeHover(node => {
-          if ((!node) || (node && hoverNode === node)) return;
-
-          highlightLinks.clear();
-          if (node) {
-            node.links.forEach(link => highlightLinks.add(link));
-          }
-
-          hoverNode = node || null;
-
-      Graph
-        .linkWidth(Graph.linkWidth())
-        .linkColor(Graph.linkColor());
+	const nodeEl = document.createElement('div');
+        nodeEl.textContent = node.id;
+        nodeEl.className = 'node-label';
+        return new CSS2DObject(nodeEl);
         });
 
     // Spread nodes a little wider
