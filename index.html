@@ -13,13 +13,12 @@
 
   <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
   <script type="module">
-    import { CSS2DRenderer, CSS2DObject } from 'https://unpkg.com/three/examples/jsm/renderers/CSS2DRenderer.js';
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
     const highlightLinks = new Set();
     let hoverNode = null;
 
-    const Graph = ForceGraph3D({extraRenderers: [new CSS2DRenderer()]})
+    const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
         .jsonUrl('./datasets/animals.json')
         .nodeThreeObject(node => {
@@ -44,11 +43,6 @@
             node, // lookAt ({ x, y, z })
             2000  // ms transition duration
           );
-
-	  const nodeEl = document.createElement('div');
-          nodeEl.textContent = node.id;
-          nodeEl.className = 'node-label';
-          return new CSS2DObject(nodeEl);
         });
 
     // Spread nodes a little wider
