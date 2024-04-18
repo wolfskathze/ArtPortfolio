@@ -4,6 +4,16 @@
 
   <script src="https://unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
+
+  <style>
+    .node-label {
+      font-size: 12px;
+      padding: 1px 4px;
+      border-radius: 4px;
+      background-color: rgba(0,0,0,0.5);
+      user-select: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -27,22 +37,21 @@
   <div id="3d-graph"></div>
 
   <script type="module">
-    import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-    //import { CSS2DRenderer, CSS2DObject } from 'https://unpkg.com/three/examples/jsm/renderers/CSS2DRenderer.js';
+    import SpriteText from "//unpkg.com/three-spritetext/dist/three-spritetext.mjs";
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-      .jsonUrl('./datasets/animals.json')
-      .nodeThreeObject(node => {
-          const imgTexture = new THREE.TextureLoader().load(node.link);
-        imgTexture.colorSpace = THREE.SRGBColorSpace;
-        const material = new THREE.SpriteMaterial({ map: imgTexture });
-        const sprite = new THREE.Sprite(material);
-        sprite.scale.set(12, 12);
-        return sprite;
-      })
-      .nodeThreeObjectExtend(true)
-    ;
+        .jsonUrl('../datasets/animals.json')
+        .nodeAutoColorBy('group')
+        .nodeThreeObject(node => {
+          const sprite = new SpriteText(node.id);
+          sprite.material.depthWrite = false; // make sprite background transparent
+          sprite.textHeight = 8;
+          return sprite;
+        });
+
+    // Spread nodes a little wider
+    Graph.d3Force('charge').strength(-120);
   </script>
   <script>
 function zoomOut(){
