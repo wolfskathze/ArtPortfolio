@@ -3,13 +3,38 @@
 
   <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
+
+  <script type="text/javascript">
+    var artist = "KW";
+    var title = "ABC";
+    var date = "18.04.2024";
+    var material = "steel";
+  </script>
 </head>
 
 <body>
   <i>Disclaimer:</i>
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
+  <i>
+      <script type="text/javascript">
+        document.write(artist)
+      </script>
+      -
+      <script type="text/javascript">
+        document.write(title)
+      </script>
+      -
+      <script type="text/javascript">
+        document.write(date)
+      </script>
+      -
+      <script type="text/javascript">
+        document.write(material)
+      </script>
+  </i>
   <div id="3d-graph"></div>
+
 
   <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
   <script type="module">
@@ -31,7 +56,7 @@
         })
         .onNodeClick(node => {
           // Aim at node from outside it
-          const distance = 40;
+          const distance = 20;
           const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
 
           const newPos = node.x || node.y || node.z
@@ -43,6 +68,7 @@
             node, // lookAt ({ x, y, z })
             2000  // ms transition duration
           );
+	document.getElementById("title") = node.id;
         });
 
     // Spread nodes a little wider
