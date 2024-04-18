@@ -1,41 +1,14 @@
 <head>
-  <link rel="stylesheet" href="./src/index.css">
   <style> body { margin: 0; } </style>
 
-  <script src="https://unpkg.com/3d-force-graph"></script>
+  <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
-
-  <style>
-    .node-label {
-      font-size: 12px;
-      padding: 1px 4px;
-      border-radius: 4px;
-      background-color: rgba(0,0,0,0.5);
-      user-select: none;
-    }
-  </style>
 </head>
 
 <body>
-  <i>Disclaimer:</i>
-  <i>This page is a modification of the
-  <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
-  <br>
-  <div class="radio-toolbar">
-    <input type="radio" id="color" name="sort" value="color" checked="checked">
-    <label for="color">Sort By Color</label>
-    <input type="radio" id="type" name="sort" value="type">
-    <label for="type">Sort by Type</label>
-    <input type="radio" id="date" name="sort" value="date">
-    <label for="date">Sort by Date</label>
-    <input type="radio" id="topic" name="sort" value="topic" >
-    <label for="topic">Sort by Topic</label>
-
-    <input type="button" id="zoom" onclick="zoomOut()">
-    <label for="zoom">Zoom out</label>
-  </div>
   <div id="3d-graph"></div>
 
+  <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
   <script type="module">
     import SpriteText from "//unpkg.com/three-spritetext/dist/three-spritetext.mjs";
 
@@ -46,17 +19,13 @@
         .nodeThreeObject(node => {
           const sprite = new SpriteText(node.id);
           sprite.material.depthWrite = false; // make sprite background transparent
+          sprite.color = node.color;
           sprite.textHeight = 8;
           return sprite;
         });
 
     // Spread nodes a little wider
     Graph.d3Force('charge').strength(-120);
-  </script>
-  <script>
-function zoomOut(){
-alert("I am an alert box!");
-document.getElementById('Graph').zoomToFit(400);
-}
+
   </script>
 </body>
