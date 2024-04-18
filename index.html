@@ -45,7 +45,7 @@
           );
         })
         .onNodeHover(node => {
-          if ((!node && !highlightNodes.size) || (node && hoverNode === node)) return;
+          if ((!node) || (node && hoverNode === node)) return;
 
           highlightLinks.clear();
           if (node) {
