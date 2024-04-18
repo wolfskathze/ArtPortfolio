@@ -17,11 +17,11 @@
         .jsonUrl('./datasets/animals.json')
         //.nodeAutoColorBy('group')
         .nodeThreeObject(node => {
-          const sprite = new SpriteText(node.id);
-          sprite.material.depthWrite = false; // make sprite background transparent
+          //const sprite = new SpriteText(node.id);
+          //sprite.material.depthWrite = false; // make sprite background transparent
           //sprite.color = node.color;
-          sprite.textHeight = 8;
-          return sprite;
+          //sprite.textHeight = 8;
+          //return sprite;
           const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
         imgTexture.colorSpace = THREE.SRGBColorSpace;
         const material = new THREE.SpriteMaterial({ map: imgTexture });
