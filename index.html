@@ -16,23 +16,7 @@
   <i>Disclaimer:</i>
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
-  <i>
-      <script type="text/javascript">
-        document.write(artist)
-      </script>
-      -
-      <script type="text/javascript">
-        document.write(title)
-      </script>
-      -
-      <script type="text/javascript">
-        document.write(date)
-      </script>
-      -
-      <script type="text/javascript">
-        document.write(material)
-      </script>
-  </i>
+<div id="Title">Title</div>
   <div id="3d-graph"></div>
 
 
@@ -68,7 +52,8 @@
             node, // lookAt ({ x, y, z })
             2000  // ms transition duration
           );
-	document.getElementById("title") = node.id;
+         var x = document.getElementById("Title");
+         x.innerHTML = node.id
         });
 
     // Spread nodes a little wider
