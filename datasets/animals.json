@@ -10,7 +10,7 @@
     {"id": "panda", "group": 1},
     {"id": "squirrel", "group": 1},
     {"id": "tiger", "group": 1},
-    {"id": "whale", "group": 1},
+    {"id": "whale", "group": 1}
   ],
   "links": [
     {"source": "cat", "target": "dog", "value": 1},
@@ -35,6 +35,6 @@
     {"source": "panda", "target": "whale", "value": 1},
     {"source": "squirrel", "target": "whale", "value": 1},
     {"source": "eagle", "target": "owl", "value": 1},
-    {"source": "whale", "target": "octopus", "value": 1},
+    {"source": "whale", "target": "octopus", "value": 1}
   ]
 }
