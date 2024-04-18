@@ -22,6 +22,12 @@
           //sprite.color = node.color;
           sprite.textHeight = 8;
           return sprite;
+          const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
+        imgTexture.colorSpace = THREE.SRGBColorSpace;
+        const material = new THREE.SpriteMaterial({ map: imgTexture });
+        const spritetwo = new THREE.Sprite(material);
+        spritetwo.scale.set(12, 12);
+        return spritetwo;
         });
 
     // Spread nodes a little wider
