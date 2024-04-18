@@ -42,13 +42,13 @@
           Graph.cameraPosition(
             newPos, // new position
             node, // lookAt ({ x, y, z })
-            3000  // ms transition duration
+            2000  // ms transition duration
           );
 
-	const nodeEl = document.createElement('div');
-        nodeEl.textContent = node.id;
-        nodeEl.className = 'node-label';
-        return new CSS2DObject(nodeEl);
+	  const nodeEl = document.createElement('div');
+          nodeEl.textContent = node.id;
+          nodeEl.className = 'node-label';
+          return new CSS2DObject(nodeEl);
         });
 
     // Spread nodes a little wider
