@@ -15,6 +15,9 @@
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
+    const highlightLinks = new Set();
+    let hoverNode = null;
+
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
         .jsonUrl('./datasets/animals.json')
@@ -40,12 +43,27 @@
             node, // lookAt ({ x, y, z })
             3000  // ms transition duration
           );
+        })
+        .onNodeHover(node => {
+          if ((!node && !highlightNodes.size) || (node && hoverNode === node)) return;
+
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (node) {
+            node.links.forEach(link => highlightLinks.add(link));
+          }
+
+          hoverNode = node || null;
+
+      Graph
+        .linkWidth(Graph.linkWidth())
+        .linkColor(Graph.linkColor());
         });
 
     // Spread nodes a little wider
     //Graph.d3Force('charge').strength(-120);
 
-  // fit to canvas when engine stops
-  //Graph.onEngineStop(() => Graph.zoomToFit(400));
+    // fit to canvas when engine stops
+    // Graph.onEngineStop(() => Graph.zoomToFit(400));
   </script>
 </body>
