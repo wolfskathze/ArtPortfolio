@@ -54,7 +54,7 @@ document.body.appendChild(description);
           );
         })
         .onNodeHover(node => {
-         var title = document.getElementById("Title");
+         var title = document.getElementById("description");
 	if(node != null){
          title.innerHTML = `${node.author} - ${node.id}, ${node.type}, ${node.date}`;
         }
