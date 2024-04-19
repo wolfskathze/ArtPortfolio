@@ -36,7 +36,7 @@
           const material = new THREE.SpriteMaterial({ map: imgTexture });
           const sprite = new THREE.Sprite(material);
           sprite.scale.set(node.width, node.height);
-          return spritetwo;
+          return sprite;
         })
         .onNodeClick(node => {
           // Aim at node from outside it
