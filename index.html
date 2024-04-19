@@ -48,12 +48,12 @@
           );
         })
         .onNodeHover(node => {
-	if(node != null){
          var title = document.getElementById("Title");
+	if(node != null){
          title.innerHTML = node.author + node.id + node.type + node.date;
         }
         else{
-         title.innerHTML = " ";        
+         title.innerHTML = "";        
         }
         });
 
