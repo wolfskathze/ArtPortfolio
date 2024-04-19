@@ -49,7 +49,7 @@
         })
         .onNodeHover(node => {
          var title = document.getElementById("Title");
-         title.innerHTML = `${node.author} - "${node.id}", ${node.type}, ${node.date}`;
+         title.innerHTML = node.author + node.id + node.type + node.date;
         });
 
     // Spread nodes a little wider
