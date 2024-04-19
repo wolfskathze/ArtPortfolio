@@ -1,7 +1,7 @@
 {
   "nodes": [
-    {"id": "cat", "group": 1, "picture": "cat.jpg", "width": 12, "height": 12},
-    {"id": "dog", "group": 1, "picture": "dog.jpg", "width": 12, "height": 12},
+    {"id": "cat", "group": 1, "picture": "cat.jpg", "width": 16, "height": 12},
+    {"id": "dog", "group": 1, "picture": "dog.jpg", "width": 12, "height": 16},
     {"id": "eagle", "group": 2, "picture": "eagle.jpg", "width": 12, "height": 12},
     {"id": "elephant", "group": 1, "picture": "elephant.jpg", "width": 12, "height": 12},
     {"id": "grasshopper", "group": 3, "picture": "grasshopper.jpg", "width": 12, "height": 12},
