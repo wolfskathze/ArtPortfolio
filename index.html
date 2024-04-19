@@ -17,15 +17,6 @@
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-    var description = document.createElement('div');
-    description.style.position = 'absolute';
-description.style.width = 100;
-description.style.height = 100;
-description.style.backgroundColor = "blue";
-description.innerHTML = "hi there!";
-description.style.top = 200 + 'px';
-description.style.left = 200 + 'px';
-document.body.appendChild(description);
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
@@ -54,7 +45,13 @@ document.body.appendChild(description);
           );
         })
         .onNodeHover(node => {
-         var title = document.getElementById("description");
+         var title = document.createElement('div');
+title.style.position = 'absolute';
+title.style.width = 100;
+title.style.height = 100;
+title.style.backgroundColor = "blue";
+title.style.top = 0 + 'px';
+title.style.left = 0 + 'px';
 	if(node != null){
          title.innerHTML = `${node.author} - ${node.id}, ${node.type}, ${node.date}`;
         }
