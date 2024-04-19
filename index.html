@@ -52,8 +52,10 @@ title.style.height = 100;
 title.style.backgroundColor = "blue";
 title.style.top = 200 + 'px';
 title.style.left = 200 + 'px';
+
 	if(node != null){
          title.innerHTML = `${node.author} - ${node.id}, ${node.type}, ${node.date}`;
+document.body.appendChild(title);
         }
         else{
          title.innerHTML = "<br>";        
