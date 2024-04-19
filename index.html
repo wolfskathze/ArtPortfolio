@@ -5,10 +5,7 @@
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
 
   <script type="text/javascript">
-    var author = "KW";
-    var title = "ABC";
-    var date = "18.04.2024";
-    var type = "steel";
+    var title = "";
   </script>
 </head>
 
@@ -17,9 +14,6 @@
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
 <div id="Title"></div>
-<div id="Author"></div>
-<div id="Date"></div>
-<div id="Type"></div>
   <div id="3d-graph"></div>
 
 
@@ -56,13 +50,7 @@
             2000  // ms transition duration
           );
          var title = document.getElementById("Title");
-         var author = document.getElementById("Author");
-         var date = document.getElementById("Date");
-         var type = document.getElementById("Type");
-         title.innerHTML = node.id;
-         author.innerHTML = node.author;
-         date.innerHTML = node.date;
-         type.innerHTML = node.type;
+         title.innerHTML = node.id + node.author + node.date + node.type;
         });
 
     // Spread nodes a little wider
