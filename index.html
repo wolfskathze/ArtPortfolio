@@ -34,13 +34,13 @@
           const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
           imgTexture.colorSpace = THREE.SRGBColorSpace;
           const material = new THREE.SpriteMaterial({ map: imgTexture });
-          const spritetwo = new THREE.Sprite(material);
-          spritetwo.scale.set(12, 12);
+          const sprite = new THREE.Sprite(material);
+          sprite.scale.set(node.width, node.height);
           return spritetwo;
         })
         .onNodeClick(node => {
           // Aim at node from outside it
-          const distance = 20;
+          const distance = 30;
           const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
 
           const newPos = node.x || node.y || node.z
