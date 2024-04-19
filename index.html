@@ -52,6 +52,9 @@
         else{
          title.innerHTML = "<br>";        
         }
+        })
+        .onNodeRightClick(node => {
+        Graph.zoomToFit(400));
         });
   </script>
 </body>
