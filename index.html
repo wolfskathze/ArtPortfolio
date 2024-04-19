@@ -17,6 +17,15 @@
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+    var description = document.createElement('div');
+    description.style.position = 'absolute';
+text2.style.width = 100;
+text2.style.height = 100;
+text2.style.backgroundColor = "blue";
+text2.innerHTML = "hi there!";
+text2.style.top = 200 + 'px';
+text2.style.left = 200 + 'px';
+document.body.appendChild(text2);
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
