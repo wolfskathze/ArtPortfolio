@@ -50,7 +50,7 @@
             2000  // ms transition duration
           );
          var title = document.getElementById("Title");
-         title.innerHTML = node.id + node.author + node.date + node.type;
+         title.innerHTML = `${node.author} - "${node.id}" , ${node.type}, ${node.date}`;
         });
 
     // Spread nodes a little wider
