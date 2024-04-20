@@ -13,14 +13,13 @@
   <i>Disclaimer:</i>
   <i>This page is a modification of the
   <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
-<div id="Title"><span style="color:001"><br></span></div>
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
          var title = document.createElement('div');
 title.style.position = 'absolute';
-title.style.width = 500;
+title.style.width = 1000;
 title.style.height = 20;
 title.style.backgroundColor = '#001';
 title.style.color = '#fff';
@@ -54,17 +53,15 @@ title.style.left = 0 + 'px';
           );
         })
         .onNodeHover(node => {
-
-
 	if(node != null){
-         title.innerHTML = `${node.author} - ${node.id}, ${node.type}, ${node.date}`;
-document.body.appendChild(title);
+          title.innerHTML = `${node.author} - ${node.id}, ${node.type}, ${node.date}`;
+          document.body.appendChild(title);
         }
         else{
-document.body.removeChild(title);    
+          document.body.removeChild(title);    
         }
         })
-        .onNodeRightClick(node => {
+        .onBackgroundClick(node => {
         Graph.zoomToFit(400);
         });
   </script>
