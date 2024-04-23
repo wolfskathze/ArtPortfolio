@@ -26,7 +26,7 @@
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-        .jsonUrl('./datasets/animals.json')
+        .jsonUrl('./datasets/artportfolio.json')
         .nodeThreeObject(node => {
           const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
           imgTexture.colorSpace = THREE.SRGBColorSpace;
