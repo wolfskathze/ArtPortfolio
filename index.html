@@ -10,7 +10,6 @@
 </head>
 
 <body>
-  <i></i>
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
@@ -23,6 +22,7 @@
          title.style.color = '#fff';
          title.style.top = 0 + 'px';
          title.style.left = 0 + 'px';
+         title.style.fontsize = "25px";
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
