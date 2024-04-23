@@ -10,21 +10,18 @@
 </head>
 
 <body>
-  <i>Disclaimer:</i>
-  <i>This page is a modification of the
-  <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
 
          var title = document.createElement('div');
-title.style.position = 'absolute';
-title.style.width = 1000;
-title.style.height = 20;
-title.style.backgroundColor = '#001';
-title.style.color = '#fff';
-title.style.top = 0 + 'px';
-title.style.left = 0 + 'px';
+         title.style.position = 'absolute';
+         title.style.width = window.innerWidth;
+         title.style.height = 20;
+         title.style.backgroundColor = '#001';
+         title.style.color = '#fff';
+         //title.style.top = 0 + 'px';
+         //title.style.left = 0 + 'px';
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
@@ -38,13 +35,14 @@ title.style.left = 0 + 'px';
           return sprite;
         })
         .onNodeClick(node => {
+          //Zoom function by V.Asturiano / https://github.com/vasturiano/3d-force-graph/blob/master/example/click-to-focus/index.html / MIT License
           // Aim at node from outside it
-          const distance = 30;
-          const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+          const dist = 30;
+          const distRatio = 1 + dist/Math.hypot(node.x, node.y, node.z);
 
           const newPos = node.x || node.y || node.z
             ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
-            : { x: 0, y: 0, z: distance }; // special case if node is in (0,0,0)
+            : { x: 0, y: 0, z: dist }; // special case if node is in (0,0,0)
 
           Graph.cameraPosition(
             newPos, // new position
