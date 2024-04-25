@@ -3,33 +3,65 @@
 
   <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
+
+  <script type="text/javascript">
+    var title = "null";
+  </script>
 </head>
 
 <body>
-  <i>Disclaimer:</i>
-  <i>This page is a modification of the
-  <a href="https://vasturiano.github.io/3d-force-graph/example/img-nodes/">img-nodes example of vasturianos 3d-force-graph component</a> for testing and educational purposes.</i>
   <div id="3d-graph"></div>
-
-  <script type="importmap">{ "imports": { "three": "//unpkg.com/three/build/three.module.js" }}</script>
   <script type="module">
-    import SpriteText from "//unpkg.com/three-spritetext/dist/three-spritetext.mjs";
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
+
+         var title = document.createElement('div');
+         title.style.position = 'absolute';
+         title.style.width = window.innerWidth;
+         title.style.height = 30;
+         title.style.backgroundColor = '#001';
+         title.style.color = '#fff';
+         title.style.top = 0 + 'px';
+         title.style.left = 0 + 'px';
+         title.style.fontsize = "x-large";
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
-        .jsonUrl('./datasets/animals.json')
+        .jsonUrl('./datasets/ArtPortfolio.json')
         .nodeThreeObject(node => {
           const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.picture}`);
-        imgTexture.colorSpace = THREE.SRGBColorSpace;
-        const material = new THREE.SpriteMaterial({ map: imgTexture });
-        const spritetwo = new THREE.Sprite(material);
-        spritetwo.scale.set(12, 12);
-        return spritetwo;
+          imgTexture.colorSpace = THREE.SRGBColorSpace;
+          const material = new THREE.SpriteMaterial({ map: imgTexture });
+          const sprite = new THREE.Sprite(material);
+          sprite.scale.set(node.width, node.height);
+          return sprite;
+        })
+        .onNodeClick(node => {
+          //Zoom function by V.Asturiano / https://github.com/vasturiano/3d-force-graph/blob/master/example/click-to-focus/index.html / MIT License
+          // Aim at node from outside it
+          const dist = 30;
+          const distRatio = 1 + dist/Math.hypot(node.x, node.y, node.z);
+
+          const newPos = node.x || node.y || node.z
+            ? { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio }
+            : { x: 0, y: 0, z: dist }; // special case if node is in (0,0,0)
+
+          Graph.cameraPosition(
+            newPos, // new position
+            node, // lookAt ({ x, y, z })
+            2000  // ms transition duration
+          );
+        })
+        .onNodeHover(node => {
+	if(node != null){
+          title.innerHTML = `${node.author} - ${node.id}, ${node.type}, ${node.date}`;
+          document.body.appendChild(title);
+        }
+        else{
+          document.body.removeChild(title);    
+        }
+        })
+        .onBackgroundClick(node => {
+        Graph.zoomToFit(400);
         });
-
-    // Spread nodes a little wider
-    Graph.d3Force('charge').strength(-120);
-
   </script>
 </body>

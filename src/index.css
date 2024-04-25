@@ -2,6 +2,7 @@ body{
   text-align:center;
   font-family: Sans-serif;
   background-color: #fff;
+  color: #001;
 }
 .radio-toolbar input[type="radio"] {
   display: none;
