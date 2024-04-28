@@ -1,16 +1,16 @@
 {
 	"nodes": [
-		{"id": "cat.jpg", "name": "cat.jpg", "author": "Author", "date": "12.03.2024", "type": "Photography", "picture": "cat.jpg", "width": 12, "height": 12},
-		{"id": "dog.jpg", "name": "dog.jpg", "author": "Author", "date": "13.03.2024", "type": "Photography", "picture": "dog.jpg", "width": 12, "height": 12},
-		{"id": "eagle.jpg", "name": "eagle.jpg", "author": "Author", "date": "14.03.2024", "type": "Photography", "picture": "eagle.jpg", "width": 12, "height": 12},
-		{"id": "elephant.jpg", "name": "elephant.jpg", "author": "Author", "date": "15.03.2024", "type": "Photography", "picture": "elephant.jpg", "width": 12, "height": 12},
-		{"id": "grasshopper.jpg", "name": "grasshopper.jpg", "author": "Author", "date": "16.03.2024", "type": "Photography", "picture": "grasshopper.jpg", "width": 12, "height": 12},
-		{"id": "octopus.jpg", "name": "octopus.jpg", "author": "Author", "date": "17.03.2024", "type": "Photography", "picture": "octopus.jpg", "width": 12, "height": 12},
-		{"id": "owl.jpg", "name": "owl.jpg", "author": "Author", "date": "18.03.2024", "type": "Photography", "picture": "owl.jpg", "width": 12, "height": 12},
-		{"id": "panda.jpg", "name": "panda.jpg", "author": "Author", "date": "19.03.2024", "type": "Photography", "picture": "panda.jpg", "width": 12, "height": 12},
-		{"id": "squirrel.jpg", "name": "squirrel.jpg", "author": "Author", "date": "20.03.2024", "type": "Photography", "picture": "squirrel.jpg", "width": 12, "height": 12},
-		{"id": "tiger.jpg", "name": "tiger.jpg", "author": "Author", "date": "21.03.2024", "type": "Photography", "picture": "tiger.jpg", "width": 12, "height": 12},
-		{"id": "whale.jpg", "name": "whale.jpg", "author": "Author", "date": "22.03.2024", "type": "Photography", "picture": "whale.jpg", "width": 12, "height": 12}
+		{"id": "cat.jpg", "name": "Cat", "author": "Author", "date": "12.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "dog.jpg", "name": "Dog", "author": "Author", "date": "13.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "eagle.jpg", "name": "Eagle", "author": "Author", "date": "14.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "elephant.jpg", "name": "Elephant", "author": "Author", "date": "15.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "grasshopper.jpg", "name": "Grasshopper", "author": "Author", "date": "16.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "octopus.jpg", "name": "Octopus", "author": "Author", "date": "17.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "owl.jpg", "name": "Owl", "author": "Author", "date": "18.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "panda.jpg", "name": "Panda", "author": "Author", "date": "19.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "squirrel.jpg", "name": "Squirrel", "author": "Author", "date": "20.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "tiger.jpg", "name": "Tiger", "author": "Author", "date": "21.03.2024", "type": "Photography", "width": 12, "height": 12},
+		{"id": "whale.jpg", "name": "Whale", "author": "Author", "date": "22.03.2024", "type": "Photography", "width": 12, "height": 12}
 	],
 	"links": [
 		{"source": "cat.jpg", "target": "dog.jpg", "value": 3},
