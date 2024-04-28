@@ -29,11 +29,11 @@ Sub JSON_generator()
     outputstr = outputstr & vbTab & vbDoublequote & "nodes" & vbDoublequote & ": [" & vbCrLf
     For i = 2 To Cells(Rows.Count - 1, datanamerow).End(xlUp).Row
         outputstr = outputstr & vbTab & vbTab & "{" _
-        & vbDoublequote & "id" & vbDoublequote & ": " & vbDoublequote & Cells(i, namerow).Value & vbDoublequote & ", " _
+        & vbDoublequote & "id" & vbDoublequote & ": " & vbDoublequote & Cells(i, datanamerow).Value & vbDoublequote & ", " _
+        & vbDoublequote & "name" & vbDoublequote & ": " & vbDoublequote & Cells(i, namerow).Value & vbDoublequote & ", " _
         & vbDoublequote & "author" & vbDoublequote & ": " & vbDoublequote & Cells(i, authorrow).Value & vbDoublequote & ", " _
         & vbDoublequote & "date" & vbDoublequote & ": " & vbDoublequote & Cells(i, daterow).Value & vbDoublequote & ", " _
         & vbDoublequote & "type" & vbDoublequote & ": " & vbDoublequote & Cells(i, typerow).Value & vbDoublequote & ", " _
-        & vbDoublequote & "picture" & vbDoublequote & ": " & vbDoublequote & Cells(i, datanamerow).Value & vbDoublequote & ", " _
         & vbDoublequote & "width" & vbDoublequote & ": " & Cells(i, widthrow).Value & ", " _
         & vbDoublequote & "height" & vbDoublequote & ": " & Cells(i, heightrow).Value _
         & "}," & vbCrLf
