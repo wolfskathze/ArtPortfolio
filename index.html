@@ -22,7 +22,8 @@
          title.style.color = '#fff';
          title.style.top = 0 + 'px';
          title.style.left = 0 + 'px';
-         title.style.fontsize = "x-large";
+         title.style.fontsize = "xx-large";
+         title.style.fontFamily = "verdana";
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
@@ -50,17 +51,13 @@
             node, // lookAt ({ x, y, z })
             2000  // ms transition duration
           );
-        })
-        .onNodeHover(node => {
-	if(node != null){
+	  if(node != null){
           title.innerHTML = `${node.author} - ${node.name}, ${node.type}, ${node.date}`;
           document.body.appendChild(title);
-        }
-        else{
-          document.body.removeChild(title);    
-        }
+          }
         })
         .onBackgroundClick(node => {
+        document.body.removeChild(title);  
         Graph.zoomToFit(400);
         });
   </script>
