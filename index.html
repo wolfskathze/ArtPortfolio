@@ -17,24 +17,31 @@
          var title = document.createElement('div');
          title.style.position = 'absolute';
          title.style.width = window.innerWidth;
-         title.style.height = 30;
+         title.style.height = 25;
          title.style.backgroundColor = '#001';
-         title.style.color = '#fff';
+         title.style.color = '#eef';
          title.style.top = 0 + 'px';
          title.style.left = 0 + 'px';
-         title.style.fontsize = "x-large";
+         title.style.fontsize = "xx-large";
+         title.style.fontFamily = "Arial,sans-serif";
+	 title.style.fontWeight = "600";
 
     const Graph = ForceGraph3D()
       (document.getElementById('3d-graph'))
         .jsonUrl('./datasets/ArtPortfolio.json')
         .nodeThreeObject(node => {
-          const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.id}`);
-          imgTexture.colorSpace = THREE.SRGBColorSpace;
-          const material = new THREE.SpriteMaterial({ map: imgTexture });
-          const sprite = new THREE.Sprite(material);
-          sprite.scale.set(node.width, node.height);
-          return sprite;
+	  try{
+            const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.id}`);
+            imgTexture.colorSpace = THREE.SRGBColorSpace;
+            const material = new THREE.SpriteMaterial({ map: imgTexture });
+            const sprite = new THREE.Sprite(material);
+            sprite.scale.set(node.width, node.height);
+            return sprite;
+          }
+	  catch{
+	  }
         })
+	.linkWidth(0.3)
         .onNodeClick(node => {
           //Zoom function by V.Asturiano / https://github.com/vasturiano/3d-force-graph/blob/master/example/click-to-focus/index.html / MIT License
           // Aim at node from outside it
@@ -50,18 +57,16 @@
             node, // lookAt ({ x, y, z })
             2000  // ms transition duration
           );
-        })
-        .onNodeHover(node => {
-	if(node != null){
+	  if(node != null){
           title.innerHTML = `${node.author} - ${node.name}, ${node.type}, ${node.date}`;
           document.body.appendChild(title);
-        }
-        else{
-          document.body.removeChild(title);    
-        }
+          }
         })
         .onBackgroundClick(node => {
+        document.body.removeChild(title);  
         Graph.zoomToFit(400);
         });
+
+    Graph.d3Force('charge').strength(-200);
   </script>
 </body>
