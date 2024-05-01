@@ -44,7 +44,8 @@
 	  }
         })
 	.linkWidth(0)
-	.linkOpacity(1)
+	.linkOpacity(0.7)
+	.enableNodeDrag('false')
 	.onNodeClick(node => {
           //Zoom function by V.Asturiano / https://github.com/vasturiano/3d-force-graph/blob/master/example/click-to-focus/index.html / MIT License
           // Aim at node from outside it
@@ -74,8 +75,11 @@
         Graph.zoomToFit(400);
         });
 
-	Graph.d3Force('charge').strength(-500);
+	Graph.d3Force('charge').strength(-120);
 	Graph.d3Force('link').strength(link => link.value * 0.01);
+	Graph.d3AlphaMin(0);
+	Graph.d3AlphaDecay(0.0228);
+	Graph.d3VelocityDecay(0.6);
 
   </script>
 </body>
