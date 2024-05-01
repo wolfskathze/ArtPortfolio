@@ -71,6 +71,6 @@
         });
 
 	Graph.d3Force('charge').strength(-200);
-	Graph.d3Force('link').strength(link => link.value);
+	Graph.d3Force('link').strength(link => link.value * 0.001);
   </script>
 </body>
