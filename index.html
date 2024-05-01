@@ -44,8 +44,8 @@
 	  }
         })
 	.linkWidth(0.3)
-	.d3Force('charge').strength(-100);
-	.d3Force('link').strength(link => link.value * 0.03);
+	.d3Force('charge').strength(-100)
+	.d3Force('link').strength(link => link.value * 0.03)
 	.onNodeClick(node => {
           //Zoom function by V.Asturiano / https://github.com/vasturiano/3d-force-graph/blob/master/example/click-to-focus/index.html / MIT License
           // Aim at node from outside it
