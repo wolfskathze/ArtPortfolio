@@ -43,7 +43,7 @@
 	  catch{
 	  }
         })
-	.linkWidth(0.3)
+	.linkWidth(0)
 	.linkOpacity(1)
 	.onNodeClick(node => {
           //Zoom function by V.Asturiano / https://github.com/vasturiano/3d-force-graph/blob/master/example/click-to-focus/index.html / MIT License
@@ -74,8 +74,8 @@
         Graph.zoomToFit(400);
         });
 
-	Graph.d3Force('charge').strength(-120);
-	Graph.d3Force('link').strength(link => link.value * 0.3);
+	Graph.d3Force('charge').strength(-300);
+	Graph.d3Force('link').strength(link => link.value * 0.1);
 
   </script>
 </body>
