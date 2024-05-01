@@ -69,8 +69,6 @@
         Graph.zoomToFit(400);
         });
 	Graph.d3Force('charge').strength(-200);
-	Graph.d3Force('link').strength(link => {
-	   Graph.links[link].value;
-	})
+	Graph.d3Force('link').strength(link => Graph.links[link].value);
   </script>
 </body>
