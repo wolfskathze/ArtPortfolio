@@ -93,11 +93,14 @@
 	Graph.d3AlphaDecay(0.02);
 	Graph.d3VelocityDecay(0.5);
 
+
+  </script>
+  <script>
   	function changeDim3d(){
-		Graph.numDimensions('3');
+		document.getElementById("Graph").numDimensions('3');
 	}
 	function changeDim2d(){
-		Graph.numDimensions('2');
+		document.getElementById("Graph").numDimensions('2');
 	}
   </script>
 </body>
