@@ -1,19 +1,29 @@
 <head>
   <style> body { margin: 0; } </style>
-
   <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
-
   <script type="text/javascript">
     var title = "null";
   </script>
 </head>
 
 <body>
+  <div class="radio-toolbar">
+    <input type="radio" id="color" name="sort" value="color" checked="checked" onchange="">
+    <label for="color">Sort By Color</label>
+    <input type="radio" id="type" name="sort" value="type" onchange="">
+    <label for="type">Sort by Type</label>
+    <input type="radio" id="date" name="sort" value="date" onchange="">
+    <label for="date">Sort by Date</label>
+    <input type="radio" id="topic" name="sort" value="topic" onchange="">
+    <label for="topic">Sort by Topic</label>
+    <input type="radio" id="3D" name="dim" value="3D" checked="checked" onclick="changeDim3d">
+    <label for="topic">Sort by Topic</label>
+    <input type="radio" id="2D" name="dim" value="2D" onclick="changeDim2d">
+    <label for="topic">Sort by Topic</label>
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-
          var title = document.createElement('div');
          title.style.position = 'absolute';
          title.style.width = window.innerWidth;
@@ -81,5 +91,11 @@
 	Graph.d3AlphaDecay(0.02);
 	Graph.d3VelocityDecay(0.5);
 
+	function changeDim3d{
+		Graph.numDimensions('3')
+	}
+	function changeDim2d{
+		Graph.numDimensions('2')
+	}
   </script>
 </body>
