@@ -1,5 +1,6 @@
 <head>
   <style> body { margin: 0; } </style>
+  <link rel="stylesheet" href="./src/index.css">
   <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
   <script type="text/javascript">
@@ -8,6 +9,14 @@
 </head>
 
 <body>
+  <script>
+  	function changeDim3d{
+		document.getElementById("Graph").numDimensions('3')
+	}
+	function changeDim2d{
+		document.getElementById("Graph").numDimensions('2')
+	}
+  </script>
   <div class="radio-toolbar">
     <input type="radio" id="color" name="sort" value="color" checked="checked" onchange="">
     <label for="color">Sort By Color</label>
@@ -90,12 +99,5 @@
 	Graph.d3AlphaMin(0);
 	Graph.d3AlphaDecay(0.02);
 	Graph.d3VelocityDecay(0.5);
-
-	function changeDim3d{
-		Graph.numDimensions('3')
-	}
-	function changeDim2d{
-		Graph.numDimensions('2')
-	}
   </script>
 </body>
