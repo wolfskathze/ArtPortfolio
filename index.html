@@ -97,10 +97,12 @@
   </script>
   <script>
   	function changeDim3d(){
-		document.getElementById("Graph").numDimensions('3');
+		const elem = document.getElementById("Graph");
+		elem.numDimensions('3');
 	}
 	function changeDim2d(){
-		document.getElementById("Graph").numDimensions('2');
+		const elem = document.getElementById("Graph");
+		elem.numDimensions('2');
 	}
   </script>
 </body>
