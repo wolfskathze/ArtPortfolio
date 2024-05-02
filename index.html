@@ -42,7 +42,7 @@
       (document.getElementById('3d-graph'))
         .jsonUrl('./datasets/ArtPortfolio.json')
 	.forceEngine('d3')
-	.numDimensions('3')
+	.numDimensions(3)
         .nodeThreeObject(node => {
 	  try{
             const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.id}`);
@@ -94,12 +94,10 @@
 	Graph.d3VelocityDecay(0.5);
 
   	function changeDim3d(){
-		const elem = document.getElementById('Graph');
-		elem.numDimensions('3');
+	Graph.numDimensions(3);
 	}
 	function changeDim2d(){
-		const elem = document.getElementById('Graph');
-		elem.numDimensions('2');
+	Graph.numDimensions(2);
 	}
   </script>
 </body>
