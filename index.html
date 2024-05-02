@@ -10,7 +10,22 @@
 
 <body>
 
-  <div id="3d-graph"></div>
+  <div id="3d-graph">
+
+    <input type="radio" id="color" name="sort" value="color" checked="checked" onchange="">
+    <label for="color">Sort By Color</label>
+    <input type="radio" id="type" name="sort" value="type" onchange="">
+    <label for="type">Sort by Type</label>
+    <input type="radio" id="date" name="sort" value="date" onclick="changeDim2d()">
+    <label for="date">Sort by Date</label>
+    <input type="radio" id="topic" name="sort" value="topic" onclick="changeDim3d()">
+    <label for="topic">Sort by Topic</label>
+    <input type="radio" id="3D" name="dim" value="3D" checked="checked" onclick="changeDim3d()">
+    <label for="topic">Sort by Topic</label>
+    <input type="radio" id="2D" name="dim" value="2D" onclick="changeDim2d()">
+    <label for="topic">Sort by Topic</label>
+
+</div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
          var title = document.createElement('div');
@@ -87,18 +102,4 @@
 	Graph.numDimensions(2);
 	}
   </script>
-  <div class="radio-toolbar">
-    <input type="radio" id="color" name="sort" value="color" checked="checked" onchange="">
-    <label for="color">Sort By Color</label>
-    <input type="radio" id="type" name="sort" value="type" onchange="">
-    <label for="type">Sort by Type</label>
-    <input type="radio" id="date" name="sort" value="date" onclick="changeDim2d()">
-    <label for="date">Sort by Date</label>
-    <input type="radio" id="topic" name="sort" value="topic" onclick="changeDim3d()">
-    <label for="topic">Sort by Topic</label>
-    <input type="radio" id="3D" name="dim" value="3D" checked="checked" onclick="changeDim3d()">
-    <label for="topic">Sort by Topic</label>
-    <input type="radio" id="2D" name="dim" value="2D" onclick="changeDim2d()">
-    <label for="topic">Sort by Topic</label>
-  </div>
 </body>
