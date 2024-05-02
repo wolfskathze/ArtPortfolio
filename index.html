@@ -88,8 +88,8 @@
     const settings = new Settings();
     const gui = new dat.GUI();
 
-    const controllerOne = gui.add(settings, 'dimSelect', 2, 2);
-    const controllerTwo = gui.add(settings, 'linkSelect', 1, 4);
+    const controllerOne = gui.add(settings, 'dimSelect', [ 'one', 'two', 'three' ]);
+    const controllerTwo = gui.add(settings, 'linkSelect', [ 'one', 'two', 'three' ]);
 
     controllerOne.onChange(changeDim3d);
     controllerTwo.onChange(changeDim2d);
