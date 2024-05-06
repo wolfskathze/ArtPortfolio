@@ -74,11 +74,11 @@
         Graph.zoomToFit(400);
         });
 
-	Graph.d3Force('charge').strength(-150);
+	Graph.d3Force('charge').strength(-200);
 	Graph.d3Force('link').strength(link => link.value * 0.05);
 	Graph.d3Force('link').distance(link => 30 / link.value);
 	Graph.d3AlphaMin(0);
-	Graph.d3AlphaDecay(0.02);
+	Graph.d3AlphaDecay(0.05);
 	Graph.d3VelocityDecay(0.5);
 
     //const Settings = function() {
