@@ -1,19 +1,18 @@
 <head>
   <style> body { margin: 0; } </style>
-
+  <script src="//unpkg.com/dat.gui"></script>
   <script src="//unpkg.com/3d-force-graph"></script>
   <!--<script src="../../dist/3d-force-graph.js"></script>-->
-
   <script type="text/javascript">
     var title = "null";
   </script>
 </head>
 
 <body>
+
   <div id="3d-graph"></div>
   <script type="module">
     import * as THREE from 'https://unpkg.com/three/build/three.module.js';
-
          var title = document.createElement('div');
          title.style.position = 'absolute';
          title.style.width = window.innerWidth;
@@ -30,7 +29,7 @@
       (document.getElementById('3d-graph'))
         .jsonUrl('./datasets/ArtPortfolio.json')
 	.forceEngine('d3')
-	.numDimensions('3')
+	.numDimensions(3)
         .nodeThreeObject(node => {
 	  try{
             const imgTexture = new THREE.TextureLoader().load(`./imgs/${node.id}`);
@@ -75,11 +74,32 @@
         Graph.zoomToFit(400);
         });
 
-	Graph.d3Force('charge').strength(-150);
-	Graph.d3Force('link').strength(link => link.value * 0.01);
+	Graph.d3Force('charge').strength(-200);
+	Graph.d3Force('link').strength(link => link.value * 0.05);
+	Graph.d3Force('link').distance(link => 30 / link.value);
 	Graph.d3AlphaMin(0);
-	Graph.d3AlphaDecay(0.02);
+	Graph.d3AlphaDecay(0.05);
 	Graph.d3VelocityDecay(0.5);
 
+    //const Settings = function() {
+    //  this.dimSelect = 3;
+    //  this.linkSelect = 1;
+    //};
+
+    //const settings = new Settings();
+    //const gui = new dat.GUI();
+
+    //const controllerOne = gui.add(settings, 'dimSelect', [ 'one', 'two', 'three' ]);
+    //const controllerTwo = gui.add(settings, 'linkSelect', [ 'one', 'two', 'three' ]);
+
+    //controllerOne.onChange(changeDim3d);
+    //controllerTwo.onChange(changeDim2d);
+
+  	//function changeDim3d(){
+	//Graph.numDimensions(3);
+	//}
+	//function changeDim2d(){
+	//Graph.numDimensions(2);
+	//}
   </script>
 </body>
